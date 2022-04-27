@@ -1,9 +1,10 @@
 import socket
+import user
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect(('localhost', 21))
 
-commands = ['USER ariesta\r\n', 'PASS heart123\r\n', 'SYST\r\n', 'QUIT\r\n']
+commands = [f'USER {user.username}\r\n', f'PASS {user.password}\r\n', 'SYST\r\n', 'QUIT\r\n']
 
 def parse_resp(msg):
     resp_code = msg[:3]
